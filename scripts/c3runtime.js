@@ -4644,7 +4644,13 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.SetMirrored,
 		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.System.Acts.AddVar,
-		C3.Plugins.Sprite.Acts.Destroy
+		C3.Plugins.Sprite.Acts.Destroy,
+		C3.Plugins.TiledBg.Acts.SetVisible,
+		C3.Plugins.Sprite.Cnds.CompareY,
+		C3.Plugins.Sprite.Exps.Y,
+		C3.Behaviors.Platform.Acts.SetVectorY,
+		C3.Plugins.System.Acts.Wait,
+		C3.Plugins.System.Cnds.Else
 	];
 };
 self.C3_JsPropNameTable = [
@@ -4676,6 +4682,7 @@ self.C3_JsPropNameTable = [
 	{Sprite14: 0},
 	{POntos: 0},
 	{Sprite15: 0},
+	{Sprite16: 0},
 	{hp1: 0},
 	{pontos: 0}
 ];
@@ -4704,7 +4711,8 @@ self.InstanceType = {
 	Sprite13: class extends self.ISpriteInstance {},
 	Sprite14: class extends self.ISpriteInstance {},
 	POntos: class extends self.ITextInstance {},
-	Sprite15: class extends self.ISpriteInstance {}
+	Sprite15: class extends self.ISpriteInstance {},
+	Sprite16: class extends self.ISpriteInstance {}
 }
 }
 
@@ -4830,7 +4838,18 @@ self.C3_ExpressionFuncs = [
 		},
 		() => 7862,
 		() => 265,
-		() => 957
+		() => 957,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() - 30);
+		},
+		() => -500,
+		() => "fantasma morto",
+		() => 0.5,
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => and("vida", v0.GetValue());
+		}
 ];
 
 
